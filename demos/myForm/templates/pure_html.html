@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    <label for="username">Username</label><br>
+    <input type="text" name="username" placeholder="Alice"><br>
+    <label for="password">Password</label><br>
+    <input type="password" name="password" placeholder="123456"><br>
+    <input type="checkbox" id="remenber" name="remenber" checked>
+    <label for="remenber"><small>Remember me</small></label>
+    <input type="submit" name="submit" value="Log in">
+</form>
+{% endblock %}

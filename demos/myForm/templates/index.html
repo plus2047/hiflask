@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import static_file %}
+
+{% block content %}
+<li><a href="{{ url_for('pure_html_form') }}">Pure HTML From</a></li>
+<li><a href="{{ url_for('basic_form') }}"">Basic Form</a></li>
+<li><a href="{{ url_for('netdisk') }}"">Netdisk</a></li>
+<li><a href="{{ url_for('rich_text_editor') }}"">Rich Text Editor</a></li>
+{% endblock %}

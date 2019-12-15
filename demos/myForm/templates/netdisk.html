@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% from "macros.html" import form_field %}
+
+{% block content %}
+<ul>
+    {% for filename in files %}
+    <li><a href="{{ url_for('uploads', filename=filename) }}">{{ files[filename] }}</a></li>
+    {% endfor %}
+</ul>
+<form method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form_field(form.file) }}
+    {{ form.submit  }}
+</form>
+{% endblock %}

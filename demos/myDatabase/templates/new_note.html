@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from 'macros.html' import form_field %}
+
+{% block content %}
+<h2>Notes</h2>
+<h4>{{ notes | length }} notes: </h4>
+{% for note in notes %}
+    <div class="note">
+        <p>{{ note.body }}</p>
+        <a class="btn" href="{{ url_for('edit_note', note_id=note.id) }}"> Edit </a>
+        <form method="POST" action="{{ url_for('delete_note', note_id=note.id) }}">
+            {{ del_note_form.csrf_token }}
+            {{ del_note_form.submit(class="btn")}}
+        </form>
+    </div>
+{% endfor %}
+
+
+<h2>New Note</h2>
+<form method="POST">
+    {{ new_note_form.csrf_token }}
+    {{ form_field(new_note_form.body) }}
+    {{ new_note_form.submit }}
+</form>
+{% endblock %}

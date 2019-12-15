@@ -1,0 +1,39 @@
+{% from 'macros.html' import static_file %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <meta charset="utf-8"/>
+            <title>{% block title %} Template - HelloFlask {% endblock %}</title>
+            {{ static_file("icon", "favicon.ico") }}
+            {% block style %}
+                {{ static_file("css", "style.css") }}
+            {% endblock %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <nav>
+            {# <ul><li><a href="{{ url_for('index') }}">Home</a></li></ul> #}
+        </nav>
+
+        <main>
+            {% for message in get_flashed_messages() %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            {% block footer %}
+                <small>
+                    <a href="http://helloflask.com" title="A HelloFlask project">HelloFlask</a>
+                </small>
+            {% endblock %}
+        </footer>
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

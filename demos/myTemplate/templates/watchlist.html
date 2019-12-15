@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import static_file %}
+
+{% block title %}
+    {{ user.username }}'s Watchlist
+{% endblock %}
+
+{% block content %}
+    <h2> <img src="{{ url_for('static', filename='avatar.jpg') }}"" width='50'> </h2>
+
+    {% if user.bio %}
+        <i>{{ user.bio }}</i>
+    {% else %}
+        <i>this user is so lazy and doesn't have a bio.</i>
+    {% endif %}
+
+    <h5>{{ user.username }}'s watchlist ({{ animes|length }})</h5>
+    {% for anime in animes %}
+        <li>{{ (anime.name + ' - ' + anime.year) | toTitle }}</li>
+    {% endfor %}
+{% endblock %}
